@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cardápio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Cardápio</h1>
+<form id="pedidoForm" th:action="@{/cardapio}" method="post">
+    <div>
+        <input type="hidden" name="clienteId" th:value="${clienteId}" />
+    </div>
+    <div th:each="prato : ${pratos}">
+        <input type="checkbox" th:value="${prato.id}" class="prato-checkbox" th:field="*{pratos}">
+        <span th:text="${prato.nome}">Prato</span>
+        <span th:text="${prato.preco}">Preço</span>
+    </div>
+    <div>
+        <p>Total: <span id="totalPreco">0.0</span></p>
+    </div>
+    <div>
+        <button type="submit">Confirmar Pedido</button>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function() {
+        function calculateTotal() {
+            var pratoIds = [];
+            $('.prato-checkbox:checked').each(function() {
+                pratoIds.push($(this).val());
+            });
+
+            $.ajax({
+                url: '/cardapio/total',
+                type: 'GET',
+                traditional: true,
+                data: { pratoIds: pratoIds },
+                success: function(total) {
+                    $('#totalPreco').text(total.toFixed(2));
+                },
+                error: function(xhr, status, error) {
+                    console.error("Erro ao calcular o total: ", error);
+                }
+            });
+        }
+
+        $('.prato-checkbox').change(function() {
+            calculateTotal();
+        });
+    });
+</script>
+</body>
+</html>
