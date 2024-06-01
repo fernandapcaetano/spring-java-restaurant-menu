@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cardápio</title>
+</head>
+<body>
+<h1>Administrador</h1>
+
+    <div th:each="prato : ${pratos}">
+        <div class="photo"><img th:src="@{/images/pratos/{fotoCaminho}(fotoCaminho=${prato.fotoCaminho})}" th:alt="${prato.nome}" width="90px"/></div>
+        <div class="details">
+            <p class="prato_nome" th:text="${prato.nome}"></p>
+            <p class="prato_descricao" th:text="${prato.descricao}"></p>
+            <p class="prato_preco" th:text="${prato.preco}"></p>
+            <div class="links">
+                <a th:href="@{'administrador/editar/' + ${prato.id}}">editar</a> <!-- Link para a página de edição -->
+                <a th:href="@{'administrador/excluir/' + ${prato.id}}" onclick="return confirm('Tem certeza que deseja excluir o prato?')">excluir</a> <!-- Link para a exclusão com confirmação -->
+            </div>
+        </div>
+    </div>
+
+    <div class="links">
+        <a href="">Histórico de pedidos</a>
+        <a href="">Adicionar novo item</a>
+    </div>
+
+</body>
+</html>
+

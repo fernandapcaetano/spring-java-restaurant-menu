@@ -1,5 +1,6 @@
 CREATE DATABASE IF NOT EXISTS restaurante;
 
+
 -- Criação da tabela para itens do cardápio
 -- CREATE TABLE IF NOT EXISTS itens_do_cardapio (
 --     id BIGINT AUTO_INCREMENT PRIMARY KEY,
