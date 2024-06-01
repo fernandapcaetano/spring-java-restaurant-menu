@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cardápio</title>
+</head>
+<body>
+<h1>Editar prato</h1>
+<form action="#" th:action="@{/administrador/editar/{id}(id=${prato.id})}" th:object="${prato}" method="post" enctype="multipart/form-data">
+    <input type="text" th:field="*{nome}" placeholder="Nome"/>
+    <textarea th:field="*{descricao}" placeholder="Descrição"></textarea>
+    <input type="number" th:field="*{preco}" placeholder="Preço"/>
+    <input type="file" name="foto" />
+    <button type="submit">Confirmar alteração</button>
+</form>
+</body>
+</html>

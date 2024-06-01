@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cardápio</title>
+
+    <script th:src="@{/js/cardapio.js}" defer></script>
+</head>
+<body>
+<h1>Histórico de pedidos</h1>
+<table>
+    <tr>
+        <th>Data</th>
+        <th>Mesa</th>
+        <th>Total</th>
+        <th>Itens</th>
+        <th>Quantidade</th>
+      </tr>
+      <tr th:each="pedido : ${pedidos}">
+        <td th:text="${#temporals.format(pedido.data, 'dd-MM-yyyy')}">Alfreds Futterkiste</td>
+        <td th:text="${pedido.mesa}">Maria Anders</td>
+        <td th:text="${pedido.totalPrecoPedido}">Germany</td>
+        <td>
+            <ul>
+                <li th:each="prato : ${pedido.pratos}" th:text="${prato.nome}"></li>
+            </ul>
+        </td>
+        <td>
+            <ul>
+                <li th:each="prato : ${pedido.pratos}" th:text="${pedido.quantidadePrato}"></li>
+            </ul>
+        </td>
+      </tr>
+</table>
+</body>
+</html>
+
