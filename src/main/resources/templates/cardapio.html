@@ -2,53 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Cardápio</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script th:src="@{/js/cardapio.js}" defer></script>
 </head>
 <body>
-<h1>Cardápio</h1>
-<form id="pedidoForm" th:action="@{/cardapio}" method="post">
-    <div>
-        <input type="hidden" name="clienteId" th:value="${clienteId}" />
-    </div>
+<h1>Restaurante</h1>
+<form action="#" th:action="@{/cardapio}" method="post" th:object="${pedido}">
+    <input type="hidden" name="mesa" id="mesa" th:value="${numeroMesa}"/>
     <div th:each="prato : ${pratos}">
-        <input type="checkbox" th:value="${prato.id}" class="prato-checkbox" th:field="*{pratos}">
-        <span th:text="${prato.nome}">Prato</span>
-        <span th:text="${prato.preco}">Preço</span>
-    </div>
-    <div>
-        <p>Total: <span id="totalPreco">0.0</span></p>
+        <!-- Selecione pratos -->
+        <input type="checkbox" name="pratos" th:value="${prato.id}"/>
+        <div class="photo"><img th:src="@{${prato.fotoCaminho}}" th:alt="${prato.nome}" width="90px"/></div>
+        <div class="details">
+            <p class="prato_nome" th:text="${prato.nome}"></p>
+            <p class="prato_descricao" th:text="${prato.descricao}"></p>
+            <p class="prato_preco" th:text="${prato.preco}"></p>
+            <!-- Adicione o campo de entrada de quantidade dentro do loop -->
+            <input type="number" name="quantidadePrato" th:value="0" min="1" step="1"/>
+        </div>
     </div>
     <div>
         <button type="submit">Confirmar Pedido</button>
     </div>
 </form>
 
-<script>
-    $(document).ready(function() {
-        function calculateTotal() {
-            var pratoIds = [];
-            $('.prato-checkbox:checked').each(function() {
-                pratoIds.push($(this).val());
-            });
 
-            $.ajax({
-                url: '/cardapio/total',
-                type: 'GET',
-                traditional: true,
-                data: { pratoIds: pratoIds },
-                success: function(total) {
-                    $('#totalPreco').text(total.toFixed(2));
-                },
-                error: function(xhr, status, error) {
-                    console.error("Erro ao calcular o total: ", error);
-                }
-            });
-        }
-
-        $('.prato-checkbox').change(function() {
-            calculateTotal();
-        });
-    });
-</script>
 </body>
 </html>
+

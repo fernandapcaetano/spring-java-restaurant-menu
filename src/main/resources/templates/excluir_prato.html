@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Excluir Prato</title>
+</head>
+<body>
+<h1>Excluir prato</h1>
+<p>Você tem certeza que deseja excluir o prato <strong th:text="${prato.nome}"></strong>?</p>
+<form th:action="@{/administrador/excluir/{id}(id=${prato.id})}" method="post">
+    <button type="submit">Sim, excluir</button>
+    <a th:href="@{/administrador}">Cancelar</a>
+</form>
+</body>
+</html>

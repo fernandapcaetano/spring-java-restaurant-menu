@@ -1,32 +1,33 @@
 package com.restaurante.restaurante.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Prato {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String foto;
+    private String fotoCaminho;
     private String nome;
     private String descricao;
     private Double preco;
-    
+    @ManyToMany
+    private List<Pedido> pedidos;
+
+    //getters e setters
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
     }
-    public String getFoto() {
-        return foto;
-    }
-    public void setFoto(String foto) {
-        this.foto = foto;
-    }
+   
     public String getNome() {
         return nome;
     }
@@ -45,7 +46,20 @@ public class Prato {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
-
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+    public String getFotoCaminho() {
+        return fotoCaminho;
+    }
+    public void setFotoCaminho(String fotoCaminho) {
+        this.fotoCaminho = fotoCaminho;
+    }
     
+
+
     
 }
