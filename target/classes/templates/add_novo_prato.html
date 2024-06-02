@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Editar prato</h1>
-<form action="#" th:action="@{/administrador/editar/{id}(id=${prato.id})}" th:object="${prato}" method="post" enctype="multipart/form-data">
+<form action="#" th:action="@{/administrador/add-novo-prato}" th:object="${prato}" method="post" enctype="multipart/form-data">
     <input type="text" th:field="*{nome}" placeholder="Nome"/>
     <textarea th:field="*{descricao}" placeholder="Descrição"></textarea>
     <input type="number" th:field="*{preco}" placeholder="Preço"/>

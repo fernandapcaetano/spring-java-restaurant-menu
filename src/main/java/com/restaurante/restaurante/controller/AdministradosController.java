@@ -87,12 +87,39 @@ public class AdministradosController {
     @GetMapping("/administrador/historico")
     public String historico(Model model) {
         List<Pedido> pedidos = pedidoRepository.findAll();
-        // for (Pedido pedido : pedidos) {
-        //     List<Prato> pratos = pedidoRepository.findPratosByPedido(pedido);
-        //     pedido.setPratos(pratos);
-        // }
         model.addAttribute("pedidos", pedidos);
         return "historico";
+    }
+
+    @GetMapping("/administrador/add-novo-prato")
+    public String addNovoPrato(Model model, Prato prato) {
+        model.addAttribute("prato", prato);
+        return "add_novo_prato";
+    }
+    @PostMapping("/administrador/add-novo-prato")
+    public ModelAndView addNovoPrato(@ModelAttribute Prato prato, @RequestParam("foto") MultipartFile imagem) {
+        ModelAndView mv = new ModelAndView("redirect:/administrador");
+        
+        try {
+            if (imagem != null && !imagem.isEmpty()) {
+                if (UploadUtil.fazerUploadImagem(imagem)) {
+                    prato.setFotoCaminho(imagem.getOriginalFilename());
+                } else {
+                    mv.addObject("msgErro", "Falha ao fazer upload da imagem.");
+                    mv.setViewName("editar_prato");
+                    return mv;
+                }
+            }
+            
+            pratoRepository.save(prato);
+            
+        } catch (Exception e) {
+            mv.addObject("msgErro", "Erro ao editar o prato: " + e.getMessage());
+            mv.setViewName("editar_prato");
+            return mv;
+        }
+
+        return mv;
     }
 
 }
