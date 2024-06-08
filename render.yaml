@@ -1,4 +1,0 @@
-services:
-  - name: restaurante
-    buildCommand: "mvn clean package"
-    startCommand: "catalina.sh run"
