@@ -32,7 +32,7 @@
 # Configuração do banco de dados
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-cphqkoect0pc73fi8hgg-a.oregon-postgres.render.com/restaurante_i0dq
+    url: jdbc:postgresql://dpg-cphqkoect0pc73fi8hgg-a.oregon-postgres.render.com:5432/restaurante_i0dq
     username: maria
     password: zYM7AAcjliQwJZi4Pq0Hnb3uazx32wJL
     driver-class-name: org.postgresql.Driver
