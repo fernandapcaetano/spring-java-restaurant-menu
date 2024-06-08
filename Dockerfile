@@ -1,14 +1,8 @@
-# Use uma imagem base do Tomcat
-FROM tomcat:11.0.0-jdk17-corretto
+FROM maven:3.8.5-openjdk-17 AS build
+COPY . .
+RUN mvn clean package -DskipTests
 
-# Remova a aplicação padrão do Tomcat (opcional, mas recomendado)
-RUN rm -rf /usr/local/tomcat/webapps/*
-
-# Copie o WAR gerado para o diretório webapps do Tomcat
-COPY target/restaurante.war /usr/local/tomcat/webapps/
-
-# Exponha a porta padrão do Tomcat
+FROM openjdk:17.0.1-jdk-slim
+COPY --from=build /target/restaurante-0.0.1-SNAPSHOT.war restaurante.war
 EXPOSE 8080
-
-# Inicie o Tomcat
-CMD ["catalina.sh", "run"]
+ENTRYPOINT ["java","-war","restaurante.war"]
