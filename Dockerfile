@@ -1,5 +1,5 @@
 # Use uma imagem base do Tomcat
-FROM tomcat:10.1.7-jdk17-corretto
+FROM tomcat:11.0.0-jdk17-corretto
 
 # Remova a aplicação padrão do Tomcat (opcional, mas recomendado)
 RUN rm -rf /usr/local/tomcat/webapps/*
