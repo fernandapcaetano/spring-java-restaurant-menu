@@ -62,5 +62,5 @@ spring:
 #Upload
 upload:
   image:
-    directory: src/main/resources/static/images/pratos
+    directory: static/images/pratos 
 
