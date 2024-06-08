@@ -58,3 +58,9 @@ spring:
       schema-locations: classpath:/schema-postgresql.sql
       mode: always
       platform: postgresql
+
+#Upload
+upload:
+  image:
+    directory: src/main/resources/static/images/pratos
+
