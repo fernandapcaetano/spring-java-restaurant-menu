@@ -13,7 +13,7 @@ mesaForm.addEventListener('submit', function(event) {
     console.log(localStorage.getItem('numeroMesa'));
 
     //redirecionando para cardapio
-    window.location.href = "http://localhost:8080/cardapio";
+    window.location.href = "https://spring-java-restaurant-menu-faqx.onrender.com/cardapio";
 
 });
 
