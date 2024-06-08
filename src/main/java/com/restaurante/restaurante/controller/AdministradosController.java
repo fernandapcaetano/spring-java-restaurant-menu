@@ -27,6 +27,8 @@ public class AdministradosController {
     private PratoRepository pratoRepository;
     @Autowired
     private PedidoRepository pedidoRepository;
+    @Autowired
+    private UploadUtil uploadUtil;
 
     @GetMapping("/administrador")
     public String administrador(Model model) {
@@ -45,10 +47,10 @@ public class AdministradosController {
     @PostMapping("/administrador/editar/{id}")
     public ModelAndView editarPrato(@ModelAttribute Prato prato, @RequestParam("foto") MultipartFile imagem) {
         ModelAndView mv = new ModelAndView("redirect:/administrador");
-        
+
         try {
             if (imagem != null && !imagem.isEmpty()) {
-                if (UploadUtil.fazerUploadImagem(imagem)) {
+                if (uploadUtil.fazerUploadImagem(imagem)) {
                     prato.setFotoCaminho(imagem.getOriginalFilename());
                 } else {
                     mv.addObject("msgErro", "Falha ao fazer upload da imagem.");
@@ -56,9 +58,9 @@ public class AdministradosController {
                     return mv;
                 }
             }
-            
+
             pratoRepository.save(prato);
-            
+
         } catch (Exception e) {
             mv.addObject("msgErro", "Erro ao editar o prato: " + e.getMessage());
             mv.setViewName("editar_prato");
@@ -99,23 +101,23 @@ public class AdministradosController {
     @PostMapping("/administrador/add-novo-prato")
     public ModelAndView addNovoPrato(@ModelAttribute Prato prato, @RequestParam("foto") MultipartFile imagem) {
         ModelAndView mv = new ModelAndView("redirect:/administrador");
-        
+
         try {
             if (imagem != null && !imagem.isEmpty()) {
-                if (UploadUtil.fazerUploadImagem(imagem)) {
+                if (uploadUtil.fazerUploadImagem(imagem)) {
                     prato.setFotoCaminho(imagem.getOriginalFilename());
                 } else {
                     mv.addObject("msgErro", "Falha ao fazer upload da imagem.");
-                    mv.setViewName("editar_prato");
+                    mv.setViewName("adicionar_prato");
                     return mv;
                 }
             }
-            
+
             pratoRepository.save(prato);
-            
+
         } catch (Exception e) {
-            mv.addObject("msgErro", "Erro ao editar o prato: " + e.getMessage());
-            mv.setViewName("editar_prato");
+            mv.addObject("msgErro", "Erro ao adicionar o prato: " + e.getMessage());
+            mv.setViewName("adicionar_prato");
             return mv;
         }
 
