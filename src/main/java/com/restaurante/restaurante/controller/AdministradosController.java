@@ -25,8 +25,10 @@ public class AdministradosController {
 
     @Autowired
     private PratoRepository pratoRepository;
+
     @Autowired
     private PedidoRepository pedidoRepository;
+    
     @Autowired
     private UploadUtil uploadUtil;
 
