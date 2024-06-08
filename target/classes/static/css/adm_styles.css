@@ -1,0 +1,101 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    margin: 0;
+    padding: 20px;
+    background-image: url('/src/main/resources/static/images/pratos/img_adm.jpeg'); /* Imagem de fundo */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+h1 {
+    color: #000000; /* Vermelho vibrante */
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 5em;
+}
+
+.photo img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+.details {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.prato_nome {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #007bff; /* Azul vibrante */
+}
+
+.prato_descricao {
+    font-size: 1em;
+    color: #6c757d; /* Cinza elegante */
+}
+
+.prato_preco {
+    font-size: 1.2em;
+    color: #28a745; /* Verde vibrante */
+}
+
+.links a {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #007bff; /* Azul vibrante */
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.links a:hover {
+    background-color: #0056b3; /* Azul mais escuro */
+}
+
+.links a:nth-child(2) {
+    background-color: #28a745; /* Verde vibrante */
+}
+
+.links a:nth-child(2):hover {
+    background-color: #1e7e34; /* Verde mais escuro */
+}
+
+.links a:nth-child(3) {
+    background-color: #dc3545; /* Vermelho vibrante */
+}
+
+.links a:nth-child(3):hover {
+    background-color: #c82333; /* Vermelho mais escuro */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .photo img {
+        margin-bottom: 10px;
+    }
+
+    .links a {
+        display: block;
+        margin: 10px 0;
+    }
+}
+

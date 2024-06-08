@@ -1,0 +1,28 @@
+/* Cores vibrantes */
+body {
+  background-color: #f5f5dc; /* Cor de fundo */
+  color: #333; /* Cor de texto escura */
+}
+
+h1 {
+  color: #e63946; /* Cor de título vibrante */
+  font-family: 'Arial Black', sans-serif; /* Fonte robusta para título */
+}
+
+#NmMesa {
+  color: #e63946; /* Cor vibrante para número da mesa */
+}
+
+p {
+  font-family: 'Roboto', sans-serif; /* Fonte legível para parágrafos */
+}
+
+/* Layout responsivo */
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 24px; /* Tamanho de fonte menor para telas menores */
+  }
+  p {
+    font-size: 16px; /* Tamanho de fonte menor para telas menores */
+  }
+}

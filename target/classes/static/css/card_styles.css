@@ -1,0 +1,95 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Arial Black', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background:#f5f5dc 100%;
+    color: #343a40;
+}
+
+h1 {
+    color: #dc3545; /* Vermelho vibrante */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.photo img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.prato_nome {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #007bff; /* Azul vibrante */
+}
+
+.prato_descricao {
+    font-size: 1em;
+    color: #6c757d; /* Cinza elegante */
+}
+
+.prato_preco {
+    font-size: 1.2em;
+    color: #28a745; /* Verde vibrante */
+}
+
+input[type="checkbox"] {
+    margin-bottom: 10px;
+}
+
+input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #ffcc00; /* Amarelo vibrante */
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #cc9900; /* Amarelo mais escuro */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .photo img {
+        margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+        width: 100%;
+    }
+}

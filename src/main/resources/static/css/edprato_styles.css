@@ -1,0 +1,55 @@
+/* Estilos gerais */
+body {
+    font-family: 'Arial Black', sans-serif;
+    background-color: #f5f5dc; /* Bege */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #dc3545; /* Cor do texto principal */
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* Fundo branco */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+input[type="text"],
+textarea,
+input[type="number"],
+button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="file"] {
+    margin-top: 10px;
+}
+
+button {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049; /* Verde escuro quando hover */
+}
+
+/* Estilos específicos para diferentes tamanhos de tela */
+@media only screen and (max-width: 600px) {
+    form {
+        padding: 10px;
+    }
+}

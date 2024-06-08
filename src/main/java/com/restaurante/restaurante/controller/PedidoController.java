@@ -44,7 +44,7 @@ public class PedidoController {
         Double totalPrecoPedido = 0.0;
         List<Prato> pratosSelecionados = pedido.getPratos();
         for (Prato prato : pratosSelecionados) {
-            totalPrecoPedido += prato.getPreco();
+            totalPrecoPedido += prato.getPreco() * quantidadePrato;
         }
         pedido.setTotalPrecoPedido(totalPrecoPedido);
         pedidoRepository.save(pedido);
